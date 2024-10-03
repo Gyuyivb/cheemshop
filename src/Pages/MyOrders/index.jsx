@@ -3,7 +3,7 @@ function MyOrders() {
 
     return (
       <>
-      <div className='bg-red-100'>
+      <div className='bg-red-500'>
         MyOrders
         </div>
       </>
