@@ -6,7 +6,7 @@ Cheemshop is an e-commerce project built with **React**, **Vite**, and **Tailwin
 
 Cheemshop is an online store where users can browse and filter through different product categories, view product details, and make selections. This is a work-in-progress, so improvements to the design and functionality are ongoing.
 
-The deployed project https://cheemshoop.netlify.app
+The deployed project https://cheemshop.netlify.app
 
 ### Features
 - **Interactive UI** built with React and styled using Tailwind CSS.
