@@ -8,7 +8,7 @@ function Home() {
   const context = useContext(ShoppingCartContext)
 
   const renderView = () => {
-    if (context.searchByTitle?.length >0) {
+    if (context.searchByTitle?.length > 0) {
       if(context.fiteredItems?.length > 0){
         return(
           context.fiteredItems?.map(item => (
