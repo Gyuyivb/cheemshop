@@ -14,8 +14,7 @@ export const ShoppingCartProvider = ({ children }) => {
     // Checkout Side Menu
     const [isCheckoutSideMenuOpen, setIsCheckoutSideMenuOpen] = useState(false)
     
-    const openCheckoutSideMenu = () => {setIsCheckoutSideMenuOpen(true) 
-        console.log('ssss :' , isCheckoutSideMenuOpen)}
+    const openCheckoutSideMenu = () => setIsCheckoutSideMenuOpen(true)
     
     const closeCheckoutSideMenu = () => setIsCheckoutSideMenuOpen(false) 
 
@@ -54,6 +53,7 @@ export const ShoppingCartProvider = ({ children }) => {
     return items?.filter(item => item.category.includes(searchByCategory))
   }
 
+  //filter by name and category
   const filteredBy = (searchType, items, searchByTitle, searchByCategory)=>{
     if (searchType === 'BY_TITLE') {
       return filteredItemsByTitle(items, searchByTitle)
@@ -65,7 +65,6 @@ export const ShoppingCartProvider = ({ children }) => {
       return items
   }}
 
-
   useEffect(() => {
     if(searchByTitle && searchByCategory) setFilteredItems(filteredBy('BY_TITLE_AND_CATEGORY', items, searchByTitle, searchByCategory))
     if(searchByTitle && !searchByCategory) setFilteredItems(filteredBy('BY_TITLE', items, searchByTitle, searchByCategory))
@@ -73,9 +72,6 @@ export const ShoppingCartProvider = ({ children }) => {
     if(!searchByTitle && !searchByCategory) setFilteredItems(filteredBy(null, items, searchByTitle, searchByCategory))
   }, [items, searchByTitle, searchByCategory])
   
-//console.log('Items fil: ', fiteredItems)
-
-
     return (
         <ShoppingCartContext.Provider value={{
             count,

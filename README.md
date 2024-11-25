@@ -1,8 +1,30 @@
-# React + Vite
+# Cheemshop 🛍️
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Cheemshop is an e-commerce project built with **React**, **Vite**, and **Tailwind CSS**. The project was created as part of a course on Platzi, and it's subject to future updates, especially in terms of the user interface and API integration.
 
-Currently, two official plugins are available:
+## 🚀 Project Overview
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Cheemshop is an online store where users can browse and filter through different product categories, view product details, and make selections. This is a work-in-progress, so improvements to the design and functionality are ongoing.
+
+The deployed project https://wondrous-sundae-59822c.netlify.app
+
+### Features
+- **Interactive UI** built with React and styled using Tailwind CSS.
+- **Fast development** using Vite for quicker build times.
+- Product filtering by categories.
+- Simple, responsive design.
+
+## 🛠️ Technologies Used
+
+- **React**: JavaScript library for building user interfaces.
+- **Vite**: A fast, next-generation build tool.
+- **Tailwind CSS**: Utility-first CSS framework for creating custom designs.
+- **React Router**: For navigating between different views in the app.
+
+## 🏁 Installation
+
+To get the project up and running on your local machine, follow these steps:
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/Gyuyivb/cheemshop.git

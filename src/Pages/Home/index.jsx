@@ -38,8 +38,7 @@ function Home() {
         <div className='grid gap-4 grid-cols-4 w-full max-w-screen-lg'>
         {renderView()}
         </div>
-        <ProductDetail />
-        
+        <ProductDetail /> 
         </Layout>
       </>
     )

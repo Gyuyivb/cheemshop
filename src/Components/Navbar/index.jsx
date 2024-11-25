@@ -74,7 +74,13 @@ const Navbar = () =>{
                     </NavLink>
                 </li>
                 <li className='flex'>
-                    <ShoppingCartIcon className='size-5 text-black' /> {context.cartProducts.length}
+                    <ShoppingCartIcon className='size-5 text-black' 
+                    onClick={() => {
+                        if(context.isCheckoutSideMenuOpen){
+                            context.closeCheckoutSideMenu()
+                            }else{context.openCheckoutSideMenu()}
+                        }}
+                    /> {context.cartProducts.length}
                 </li>
             </ul>
         </nav>
