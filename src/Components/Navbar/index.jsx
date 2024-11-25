@@ -12,7 +12,8 @@ const Navbar = () =>{
             <ul className='flex items-center gap-3'>
                 <li className='font-semibold'>
                     <NavLink 
-                    to='/' 
+                    to='/'
+                    onClick={() => context.setSearchByCategory('')} 
                     >
                         Cheemshop
                     </NavLink>
@@ -73,7 +74,7 @@ const Navbar = () =>{
                     </NavLink>
                 </li>
                 <li className='flex'>
-                    <ShoppingCartIcon className='size-5 text-black' /> {context.count}
+                    <ShoppingCartIcon className='size-5 text-black' /> {context.cartProducts.length}
                 </li>
             </ul>
         </nav>
