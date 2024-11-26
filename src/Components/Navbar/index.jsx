@@ -8,7 +8,7 @@ const Navbar = () =>{
     const activeStyle = 'underline underline-offset-4'
 
     return(
-        <nav className='flex justify-between item-center fixed z-10 top-0 w-full py-5 px-8 text-sm font-light bg-white'>
+        <nav className='flex justify-between item-center fixed z-10 top-0 w-full py-5 px-8 text-sm font-light bg-fuchsia-950 text-amber-200'>
             <ul className='flex items-center gap-3'>
                 <li className='font-semibold'>
                     <NavLink 
@@ -74,7 +74,7 @@ const Navbar = () =>{
                     </NavLink>
                 </li>
                 <li className='flex'>
-                    <ShoppingCartIcon className='size-5 text-black' 
+                    <ShoppingCartIcon className='size-5 text-amber-200' 
                     onClick={() => {
                         if(context.isCheckoutSideMenuOpen){
                             context.closeCheckoutSideMenu()

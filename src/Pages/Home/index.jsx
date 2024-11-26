@@ -26,7 +26,7 @@ function Home() {
 
     return (
       <>
-      <Layout>
+      <Layout >
       <div className='flex items-center justify-center relative w-80'>
           <h1>Home</h1>
         </div>
