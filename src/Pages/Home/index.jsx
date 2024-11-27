@@ -19,7 +19,7 @@ function Home() {
     }else{
       return(
         <div className='flex justify-center'>
-          <h1 className='text-amber-100 font-bold py-96'>NOT FOUND</h1>
+          <h1 className='text-amber-100 font-bold'>ITEM NOT FOUND</h1>
         </div>
       )
     }

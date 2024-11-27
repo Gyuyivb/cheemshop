@@ -6,7 +6,7 @@ import { ShoppingCartContext } from '../../Context'
 const ProductDetail = () => {
     const context = useContext(ShoppingCartContext)
     return(
-        <aside className={`${context.isProductDetailOpen ? 'flex' : 'hidden'} product-detail flex-col fixed right-0 bg-amber-100 border border-fuchsia-950 rounded-lg bg-white overflow-y-scroll`}>
+        <aside className={`${context.isProductDetailOpen ? 'flex' : 'hidden'} product-detail flex-col fixed right-0 bg-amber-100 border border-fuchsia-950 rounded-lg overflow-y-scroll`}>
             <div className='flex justify-between items-center p-6'>
                 <h2 className='font-medium text-xl text-fuchsia-950'>Details</h2>
                 <div >
