@@ -18,7 +18,9 @@ function Home() {
       )
     }else{
       return(
-        <div>NOT FOUND</div>
+        <div className='flex justify-center'>
+          <h1 className='text-amber-100 font-bold pb-96'>NOT FOUND</h1>
+        </div>
       )
     }
     
@@ -28,14 +30,14 @@ function Home() {
       <>
       <Layout >
       <div className='flex items-center justify-center relative w-80'>
-          <h1>Home</h1>
+          <h1 className='text-amber-100 font-bold p-2'>Home</h1>
         </div>
         <input 
         type="text" 
         placeholder='Search product' 
-        className='rounded-lg border border-black w-80 p-4 mb-4 focus:outline-none'
+        className='rounded-lg border bg-fuchsia-950 border-fuchsia-950 w-80 p-3 mb-4 focus:outline-none text-amber-100 font-light'
         onChange={(event) => context.setSearchByTitle(event.target.value)}/>
-        <div className='grid gap-4 grid-cols-4 w-full max-w-screen-lg'>
+        <div className='flex justify-center grid gap-4 lg:grid-cols-4 w-full max-w-screen-lg md:grid-cols-3'>
         {renderView()}
         </div>
         <ProductDetail /> 

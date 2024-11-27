@@ -6,7 +6,7 @@ function MyAccount() {
     return (
       <>
       <Layout>
-        MyAccount      
+      <h1 className='text-amber-100 font-bold p-2'>My Account</h1>    
         </Layout>
       </>
     )

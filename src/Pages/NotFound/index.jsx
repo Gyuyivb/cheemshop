@@ -6,7 +6,9 @@ function NotFound() {
     return (
       <>
       <Layout>
-        NotFound
+        <div>
+          <h1 className='text-amber-100 font-bold p-2 text-lg'>NotFound</h1>
+        </div>
         </Layout>
       </>
     )

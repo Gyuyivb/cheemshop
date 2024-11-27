@@ -25,15 +25,15 @@ const Card = (data) => {
             return (
                 <div 
                     className='absolute top-0 right-0 flex justify-center items-center bg-green-500 w-6 h-6 rounded-full m-2 p-1'>
-                    <CheckIcon className='size-3 text-white' />
+                    <CheckIcon className='size-3 text-fuchsia-950' />
                 </div>
                     )
         } else{
             return (
                 <div 
-                    className='absolute top-0 right-0 flex justify-center items-center bg-white w-6 h-6 rounded-full m-2 p-1'
+                    className='absolute top-0 right-0 flex justify-center items-center bg-amber-200 w-6 h-6 rounded-full m-2 p-1'
                     onClick={(event) => addProductToCart(event, data.data)}>
-                    <PlusIcon className='size-3 text-black' />
+                    <PlusIcon className='size-3 text-fuchsia-950' />
                 </div>   
             )        
         }
@@ -42,16 +42,16 @@ const Card = (data) => {
 
     return(
         <div 
-        className='bg-white cursor-pointer w-56 h-60 rounded-lg'
+        className='bg-amber-100/60 cursor-pointer w-56 h-60 rounded-lg p-1 md:w-64 md:h-72 overflow-hidden'
         onClick={() => showProduct(data.data)}>
             <figure className='relative mb-2 w-full h-4/5'>
-                <span className='absolute bottom-0 left-0 bg-white/60 rounded-lg text-blue-950 text-xs m-2 px-1 py-0.5'>{data.data.category}</span>
+                <span className='absolute bottom-0 left-1 bg-amber-200/60 rounded-lg text-orange-700 text-xs m-2 px-1 py-0.5'>{data.data.category}</span>
                 <img className='w-full h-full object-cover rounded-lg' src={data.data.image}/>
                 {renderIcon(data.data.id)}
             </figure>
-            <p className='flex justify-between'>
-                <span className='text-sm font-light'>{data.data.title}</span>
-                <span className='text-lg font-md'>${data.data.price}</span>
+            <p className='flex justify-between pl-1 pr-1'>
+                <span className='text-sm font-light text-amber-100 line-clamp-2'>{data.data.title}</span>
+                <span className='text-lg font-md text-orange-100'>${data.data.price}</span>
             </p>
         </div>
     )

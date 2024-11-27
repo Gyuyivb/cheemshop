@@ -6,7 +6,9 @@ function SignIn() {
     return (
       <>
       <Layout>
-        Sign In
+        <div>
+        <h1 className='text-amber-100 font-bold p-2'>Sign In</h1>
+        </div>
         </Layout>
       </>
     )
