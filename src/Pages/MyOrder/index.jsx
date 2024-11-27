@@ -19,7 +19,7 @@ function MyOrder() {
           </Link>
           <h1 className='text-amber-100 font-bold p-2'>My Order</h1>
         </div>
-        <div className='flex flex-col w-80'>
+        <div className='flex flex-col max-w-[666px] w-full bg-gradient-to-t from-amber-50/20 to-amber-50/40 rounded-lg p-6'>
                 {
                     context.order?.[index]?.products.map(product => (
                         <OrderCard 

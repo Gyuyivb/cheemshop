@@ -7,15 +7,15 @@ const OrderCard = props => {
         renderXMarkIcon = <XMarkIcon onClick={() => handleDelete(id)} className='h-6 w-6 text-fuchsia-900 cursor-pointer'/>
     }
     return (
-        <div className='flex justify-between items-center mb-2'>
+        <div className='flex justify-between items-center mb-6 text-fuchsia-950'>
             <div className='felx items-center gap-2'>
                 <figure className='w-20 h-20'>
                     <img className='w-full h-full rounded-lg object-cover' src={imageUrl} alt={title} />
                 </figure>
-                <p className='text-sm font-light line-clamp-2'>{title}</p>
+                <p className='text-sm font-normal line-clamp-2'>{title}</p>
             </div>
             <div className='flex items-center gap-2'>
-                <p className='text-lg font-medium'>{price}</p>
+                <p className='text-lg font-medium'>{price}$</p>
                 {renderXMarkIcon}
             </div>
         </div>

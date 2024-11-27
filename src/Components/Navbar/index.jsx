@@ -1,4 +1,5 @@
 import { ShoppingCartIcon } from "@heroicons/react/24/solid"
+import { Bars3Icon } from "@heroicons/react/16/solid"
 import { NavLink } from "react-router-dom"
 import { useContext } from "react"
 import { ShoppingCartContext } from "../../Context"
@@ -6,7 +7,6 @@ import { ShoppingCartContext } from "../../Context"
 const Navbar = () =>{
     const context = useContext(ShoppingCartContext)
     const activeStyle = 'underline underline-offset-4'
-
     return(
         <nav className='flex justify-between item-center fixed z-10 top-0 w-full py-8 px-8 text-sm font-light bg-fuchsia-950 text-amber-200'>
             <ul className='flex items-center gap-3'>
@@ -51,7 +51,7 @@ const Navbar = () =>{
                     </NavLink>
                 </li>
             </ul>
-            <ul className='flex items-center gap-3'>
+            <ul className='hidden lg:flex items-center gap-3'>
                 <li className='text-amber-100'>
                     cheemsburger@cheems.com
                 </li>
@@ -81,6 +81,20 @@ const Navbar = () =>{
                             }else{context.openCheckoutSideMenu()}
                         }}
                     /> {context.cartProducts.length}
+                </li>
+            </ul>
+            <ul className='lg:hidden flex gap-5'>
+                <li className='flex'>
+                    <ShoppingCartIcon className='size-7 text-amber-200' 
+                    onClick={() => {
+                        if(context.isCheckoutSideMenuOpen){
+                            context.closeCheckoutSideMenu()
+                            }else{context.openCheckoutSideMenu()}
+                        }}
+                    /> {context.cartProducts.length}
+                </li>
+                <li>
+                    <Bars3Icon className='size-7 text-amber-200' />
                 </li>
             </ul>
         </nav>

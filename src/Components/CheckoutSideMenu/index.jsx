@@ -29,11 +29,11 @@ const CheckoutSideMenu = () => {
 
     } 
     return(
-        <aside className={`${context.isCheckoutSideMenuOpen ? 'flex' : 'hidden'} checkout-side-menu flex-col fixed right-0 border border-fuchsia-950 rounded-lg bg-amber-50`}>
+        <aside className={`${context.isCheckoutSideMenuOpen ? 'flex' : 'hidden'} checkout-side-menu flex-col fixed right-0 border border-fuchsia-950 rounded-lg bg-amber-100 text-fuchsia-900`}>
             <div className='flex justify-between items-center p-6'>
                 <h2 className='font-medium text-xl'>My Order</h2>
                 <div >
-                    <XMarkIcon className="size-6 text-fuchsia-900 cursor-pointer" 
+                    <XMarkIcon className="size-6  cursor-pointer" 
                     onClick={() => context.closeCheckoutSideMenu()}/>
                 </div>
             </div>
@@ -57,7 +57,7 @@ const CheckoutSideMenu = () => {
                     <span className='font font-medium text-2xl'>${totalPrice(context.cartProducts)}</span>
                 </p>
                 <Link to='/my-orders/last'>
-                    <button className='bg-black py-3 text-white w-full rounded-lg' onClick={() => handleCheckout()}>Checkout</button>
+                    <button className='bg-fuchsia-950 py-3 text-amber-50 w-full rounded-lg' onClick={() => handleCheckout()}>Checkout</button>
                 </Link>
             </div>
         </aside>
