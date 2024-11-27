@@ -19,7 +19,7 @@ function Home() {
     }else{
       return(
         <div className='flex justify-center'>
-          <h1 className='text-amber-100 font-bold pb-96'>NOT FOUND</h1>
+          <h1 className='text-amber-100 font-bold py-96'>NOT FOUND</h1>
         </div>
       )
     }
@@ -35,9 +35,9 @@ function Home() {
         <input 
         type="text" 
         placeholder='Search product' 
-        className='rounded-lg border bg-fuchsia-950 border-fuchsia-950 w-80 p-3 mb-4 focus:outline-none text-amber-100 font-light'
+        className='rounded-lg border bg-fuchsia-950/50 border-fuchsia-950 w-80 p-3 mb-4 focus:outline-none text-amber-100 font-light'
         onChange={(event) => context.setSearchByTitle(event.target.value)}/>
-        <div className='flex justify-center grid gap-4 lg:grid-cols-4 w-full max-w-screen-lg md:grid-cols-3'>
+        <div className='justify-center grid gap-4 lg:grid-cols-4 w-full max-w-screen-lg md:grid-cols-3 pb-3 px-3'>
         {renderView()}
         </div>
         <ProductDetail /> 
