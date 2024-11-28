@@ -94,7 +94,8 @@ const Navbar = () =>{
                     /> {context.cartProducts.length}
                 </li>
                 <li>
-                    <Bars3Icon className='size-7 text-amber-200' />
+                    <Bars3Icon 
+                    className='size-7 text-amber-200' />
                 </li>
             </ul>
         </nav>
