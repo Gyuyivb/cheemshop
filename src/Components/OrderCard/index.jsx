@@ -8,7 +8,7 @@ const OrderCard = props => {
     }
     return (
         <div className='flex justify-between items-center mb-6 text-fuchsia-950'>
-            <div className='felx items-center gap-2'>
+            <div className='items-center gap-2'>
                 <figure className='w-20 h-20'>
                     <img className='w-full h-full rounded-lg object-cover' src={imageUrl} alt={title} />
                 </figure>

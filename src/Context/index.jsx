@@ -10,6 +10,10 @@ export const ShoppingCartProvider = ({ children }) => {
     const openProductDetail = () => {setIsProductDetailOpen(true)}
 
     const closeProductDetail = () => setIsProductDetailOpen(false)
+    
+    //Side menu navbar
+    const [isMenuOpen, setIsMenuOpen] = useState(false)
+    console.log(isMenuOpen)
 
     // Checkout Side Menu
     const [isCheckoutSideMenuOpen, setIsCheckoutSideMenuOpen] = useState(false)
@@ -95,6 +99,8 @@ export const ShoppingCartProvider = ({ children }) => {
             fiteredItems,
             searchByCategory,
             setSearchByCategory,
+            isMenuOpen,
+            setIsMenuOpen,
         }}>
             {children}
         </ShoppingCartContext.Provider>

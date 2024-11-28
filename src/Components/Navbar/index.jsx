@@ -7,6 +7,10 @@ import { ShoppingCartContext } from "../../Context"
 const Navbar = () =>{
     const context = useContext(ShoppingCartContext)
     const activeStyle = 'underline underline-offset-4'
+    const toggleOnSideBar = () =>{
+        context.setIsMenuOpen(!context.isMenuOpen)
+    }
+
     return(
         <nav className='flex justify-between item-center fixed z-10 top-0 w-full py-8 px-8 text-sm font-light bg-fuchsia-950 text-amber-200'>
             <ul className='flex items-center gap-3'>
@@ -95,7 +99,8 @@ const Navbar = () =>{
                 </li>
                 <li>
                     <Bars3Icon 
-                    className='size-7 text-amber-200' />
+                    className='size-7 text-amber-200' 
+                    onClick={toggleOnSideBar}/>
                 </li>
             </ul>
         </nav>
