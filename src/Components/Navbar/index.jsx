@@ -13,15 +13,17 @@ const Navbar = () =>{
 
     return(
         <nav className='flex justify-between item-center fixed z-10 top-0 w-full py-8 px-8 text-sm font-light bg-fuchsia-950 text-amber-200'>
-            <ul className='flex items-center gap-3'>
-                <li className='font-semibold'>
-                    <NavLink 
-                    to='/'
-                    onClick={() => context.setSearchByCategory('')} 
-                    >
-                        Cheemshop
-                    </NavLink>
+            <ul>
+                <li className='font-semibold text-lg'>
+                        <NavLink 
+                        to='/'
+                        onClick={() => context.setSearchByCategory('')} 
+                        >
+                            Cheemshop
+                        </NavLink>
                 </li>
+            </ul>
+            <ul className='hidden lg:flex items-center gap-3'>
                 <li>
                     <NavLink
                     to='/clothes' className={({ isActive }) => isActive ? activeStyle: undefined}
@@ -55,6 +57,7 @@ const Navbar = () =>{
                     </NavLink>
                 </li>
             </ul>
+            <ul></ul>
             <ul className='hidden lg:flex items-center gap-3'>
                 <li className='text-amber-100'>
                     cheemsburger@cheems.com
