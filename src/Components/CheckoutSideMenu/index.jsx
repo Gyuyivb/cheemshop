@@ -6,6 +6,7 @@ import { ShoppingCartContext } from '../../Context'
 import OrderCard from '../OrderCard'
 import { totalPrice } from '../../utils'
 
+
 const CheckoutSideMenu = () => {
     const context = useContext(ShoppingCartContext)
 
