@@ -13,7 +13,6 @@ export const ShoppingCartProvider = ({ children }) => {
     
     //Side menu navbar
     const [isMenuOpen, setIsMenuOpen] = useState(false)
-    console.log(isMenuOpen)
 
     // Checkout Side Menu
     const [isCheckoutSideMenuOpen, setIsCheckoutSideMenuOpen] = useState(false)
@@ -39,6 +38,18 @@ export const ShoppingCartProvider = ({ children }) => {
 
     //get products by title
     const [searchByTitle, setSearchByTitle] = useState(null);
+
+    //tates for logging in and creating/existing account
+    const [signOut, setSignOut] = useState(true)
+    
+    const defaultUserData= {
+      username: 'Cheemsburger',
+      email: 'cheemsburger@cheesmail.com',
+      password: 'amxiety333'
+    }
+    const [account, setAccount] = useState(defaultUserData)
+  
+
 
   useEffect(() => {
     fetch('https://fakestoreapi.com/products')
@@ -101,6 +112,10 @@ export const ShoppingCartProvider = ({ children }) => {
             setSearchByCategory,
             isMenuOpen,
             setIsMenuOpen,
+            signOut,
+            setSignOut,
+            account,
+            setAccount
         }}>
             {children}
         </ShoppingCartContext.Provider>
