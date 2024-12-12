@@ -7,12 +7,63 @@ import { ShoppingCartContext } from "../../Context"
 const Navbar = () =>{
     const context = useContext(ShoppingCartContext)
     const activeStyle = 'underline underline-offset-4'
-    const toggleOnSideBar = () =>{
-        context.setIsMenuOpen(!context.isMenuOpen)
+    const toggleOnSideBar = () =>context.setIsMenuOpen(!context.isMenuOpen)
+
+    const signOut = localStorage.getItem('sign-out')
+    const parsedSignOut = JSON.parse(signOut)
+    const isUserSignOut = context.signOut || parsedSignOut
+
+    const handleSignOut = () => {
+        const stringifiedSignOut = JSON.stringify(true)
+        localStorage.setItem('sign-out', stringifiedSignOut)
+        context.setSignOut(true)
+    }
+
+    const navbarRenderView = () => {
+        if (isUserSignOut) {
+            return (
+                <li>
+                    <NavLink
+                    to='/sign-in'
+                    className={({ isActive }) => isActive ? activeStyle: undefined}
+                    onClick={() => handleSignOut()}>
+                        Sign in
+                    </NavLink>
+                </li>
+            )
+        }else {
+            return (
+                <>
+                <li className='text-amber-100'>
+                    {context.account.email}
+                </li>
+                <li>
+                    <NavLink
+                    to='/my-orders' className={({ isActive }) => isActive ? activeStyle: undefined}>
+                        My Orders
+                    </NavLink>
+                </li>
+                <li>
+                    <NavLink
+                    to='/my-account' className={({ isActive }) => isActive ? activeStyle: undefined}>
+                        My Account
+                    </NavLink>   
+                </li>
+                <li>
+                    <NavLink
+                    to='/sign-in' 
+                    className={({ isActive }) => isActive ? activeStyle: undefined}
+                    onClick={() => handleSignOut()}>
+                        Sign out
+                    </NavLink>
+                </li>
+                </>
+            )
+        }
     }
 
     return(
-        <nav className='flex justify-between item-center fixed z-10 top-0 w-full py-8 px-8 text-sm font-light bg-fuchsia-950 text-amber-200'>
+        <nav className='flex item-center fixed z-10 top-0 w-full py-8 px-8 text-sm font-light bg-fuchsia-950 text-amber-200'>
             <ul>
                 <li className='font-semibold text-lg'>
                         <NavLink 
@@ -23,7 +74,7 @@ const Navbar = () =>{
                         </NavLink>
                 </li>
             </ul>
-            <ul className='hidden lg:flex items-center gap-3'>
+            <ul className='hidden lg:flex items-center gap-3 ml-5'>
                 <li>
                     <NavLink
                     to='/clothes' className={({ isActive }) => isActive ? activeStyle: undefined}
@@ -57,29 +108,8 @@ const Navbar = () =>{
                     </NavLink>
                 </li>
             </ul>
-            <ul></ul>
-            <ul className='hidden lg:flex items-center gap-3'>
-                <li className='text-amber-100'>
-                    {context.account.email}
-                </li>
-                <li>
-                    <NavLink
-                    to='/my-orders' className={({ isActive }) => isActive ? activeStyle: undefined}>
-                        My Orders
-                    </NavLink>
-                </li>
-                <li>
-                    <NavLink
-                    to='/my-account' className={({ isActive }) => isActive ? activeStyle: undefined}>
-                        My Account
-                    </NavLink>   
-                </li>
-                <li>
-                    <NavLink
-                    to='/sign-in' className={({ isActive }) => isActive ? activeStyle: undefined}>
-                        Sign In
-                    </NavLink>
-                </li>
+            <ul className='hidden lg:flex items-center gap-3 ml-auto'>
+               {navbarRenderView()}
                 <li className='flex'>
                     <ShoppingCartIcon className='size-5 text-amber-200' 
                     onClick={() => {

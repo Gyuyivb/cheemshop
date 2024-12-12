@@ -2,6 +2,33 @@ import { createContext, useState, useEffect } from 'react'
 
 export const ShoppingCartContext = createContext()
 
+const defaultUserData= {
+  username: 'Cheemsburger',
+  email: 'cheemsburger@cheesmail.com',
+  password: 'amxiety333'
+}
+
+export const initializaLocalStorage = () =>{
+  const accountLocalStorage = localStorage.getItem('account')
+  const signOutLocalStorage = localStorage.getItem('sign-out')
+  let accountParsed
+  let signOutParsed
+
+  if (!accountLocalStorage) {
+    localStorage.setItem('account', JSON.stringify({}))
+    accountParsed = {}
+  }else {
+    accountParsed = JSON.parse(accountLocalStorage)
+  }
+
+  if (!signOutLocalStorage) {
+    localStorage.setItem('sign-out', JSON.stringify(false))
+    signOutParsed = false
+  }else {
+    signOutParsed = JSON.parse(signOutLocalStorage)
+  }
+}
+
 export const ShoppingCartProvider = ({ children }) => {
     const [count, setCount] = useState(0);
 
@@ -39,19 +66,12 @@ export const ShoppingCartProvider = ({ children }) => {
     //get products by title
     const [searchByTitle, setSearchByTitle] = useState(null);
 
-    //tates for logging in and creating/existing account
-    const [signOut, setSignOut] = useState(true)
-    
-    const defaultUserData= {
-      username: 'Cheemsburger',
-      email: 'cheemsburger@cheesmail.com',
-      password: 'amxiety333'
-    }
+    //States for logging in and creating/existing account
     const [account, setAccount] = useState(defaultUserData)
-    console.log('el ojeto: ', account)
-
-
-  useEffect(() => {
+    const [signOut, setSignOut] = useState(false)
+    
+    //Gets the api
+    useEffect(() => {
     fetch('https://fakestoreapi.com/products')
     .then(response => response.json())
     .then(data => setItems(data))
