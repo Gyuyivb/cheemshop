@@ -60,7 +60,7 @@ const Navbar = () =>{
             <ul></ul>
             <ul className='hidden lg:flex items-center gap-3'>
                 <li className='text-amber-100'>
-                    cheemsburger@cheems.com
+                    {context.account.email}
                 </li>
                 <li>
                     <NavLink

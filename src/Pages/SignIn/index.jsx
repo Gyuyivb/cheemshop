@@ -68,9 +68,7 @@ function SignIn() {
           <h1 className='text-amber-100 font-bold p-5'>Welcome!</h1>
           <div className="flex flex-col justify-between w-96 bg-gradient-to-t from-amber-50/20 to-amber-50/40 rounded-lg p-6 text-amber-200 text-lg">
           {accountValidation()}
-          
-          </div>
-          
+          </div>     
         </Layout>
       </>
     )

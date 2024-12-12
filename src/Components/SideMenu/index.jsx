@@ -64,7 +64,7 @@ const SideMenu = () => {
                     </li>
                 </ul>
                 <p className='text-amber-100 px-6 mb-1 text-sm absolute right-0 bottom-0'>  
-                    cheemsburger@cheems.com
+                    {context.account.email}
                 </p>
         </aside>
      )
