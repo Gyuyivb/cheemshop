@@ -48,7 +48,7 @@ export const ShoppingCartProvider = ({ children }) => {
       password: 'amxiety333'
     }
     const [account, setAccount] = useState(defaultUserData)
-  
+    console.log('el ojeto: ', account)
 
 
   useEffect(() => {
