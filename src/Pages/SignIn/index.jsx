@@ -1,63 +1,82 @@
 import Layout from "../../Components/Layout"
 import { Link } from 'react-router-dom'
-import { useContext,  useState } from "react"
+import { useContext,  useState, useRef } from "react"
 import { ShoppingCartContext } from "../../Context"
 
 function SignIn() {
   const context = useContext(ShoppingCartContext)
   const [isSignUp, setIsSignUp] = useState('')
-  let isSignUpDisabled = false
-  let isLogInDisabled = false
+  const form = useRef(null)
+  //Account
+  const account = localStorage.getItem('account')
+  const parsedAccount = JSON.parse(account)
+  //Has an account?
+  const noAccountLocalStorage = parsedAccount? Object.keys(parsedAccount).lenght === 0 : true
+  const noAccountInLocalState = context.account? Object.keys(context.account).length === 0 : true
+  const hasUserAnAccount = !noAccountLocalStorage || !noAccountInLocalState
+
+  //Create an account
+  const createAccount = () => {
+    const formData = new FormData(form.current)
+    const data = {
+      username: formData.get('username'),
+      email: formData.get('email'),
+      password: formData.get('password'),
+    }
+    console.log('he aqui la data: ' , data)
+  }
+  
 
   const accountValidation = () => {
     if(!isSignUp){
-      isSignUpDisabled = !!context.account
-      isLogInDisabled = !context.account
       return(
         <div>
           <div className="mb-4">
                   <p className=" font-semibold text-xs">username:</p>  
-                  <span className="block">{context.account.username}</span> 
+                  <span className="block">{parsedAccount?.username}</span> 
             </div>
             <div className="mb-4">
                   <p className="font-semibold text-sm">email:</p>
-                  <span className="block"> {context.account.email}</span> 
+                  <span className="block"> {parsedAccount?.email}</span> 
             </div>
             <div className="mb-6">
                   <p className="font-semibold text-xs"> password:</p>
-                  <span className="block">{context.account.password}</span>
+                  <span className="block">{parsedAccount?.password}</span>
             </div>
             <Link to='/my-account'>
                 <button 
-                 disabled={isLogInDisabled}
-                className={`bg-fuchsia-950 py-3 text-amber-50 w-full rounded-lg ${isLogInDisabled? 'opacity-50 cursor-not-allowed' : ''}`}>Log in</button>
+                 disabled={!hasUserAnAccount}
+                className={`bg-fuchsia-950 py-3 text-amber-50 w-full rounded-lg ${!hasUserAnAccount ? 'opacity-50 cursor-not-allowed' : ''}`}>Log in</button>
             </Link>
               <button 
-              disabled={isSignUpDisabled}
+              disabled={hasUserAnAccount}
               onClick={() => setIsSignUp(true)}
-              className={`bg-amber-50 py-3 text-fuchsia-950 w-full rounded-lg mt-5 ${isSignUpDisabled? 'opacity-50 cursor-not-allowed' : ''}`}>Sign up</button>
+              className={`bg-amber-50 py-3 text-fuchsia-950 w-full rounded-lg mt-5 ${hasUserAnAccount? 'opacity-50 cursor-not-allowed' : ''}`}>Sign up</button>
         </div>
       )
     }else{
       return(
-        <div>
-          <p className=" font-semibold text-xs">username:</p> 
-            <input type="text" id="name" name="name" placeholder="Username" 
-                    className="rounded-lg border bg-amber-100/50 border-fuchsia-950 w-80 p-3 mb-4 focus:outline-none text-orange-800 font-light" 
-                    required />
-            <p className="font-semibold text-sm">email:</p>
-            <input type="text" id="name" name="name" placeholder="Email" 
-                    className="rounded-lg border bg-amber-100/50 border-fuchsia-950 w-80 p-3 mb-4 focus:outline-none text-orange-800 font-light" 
-                    required />
-            <p className="font-semibold text-xs"> password:</p>
-            <input type="text" id="name" name="name" placeholder="Password" 
-                    className="rounded-lg border bg-amber-100/50 border-fuchsia-950 w-80 p-3 mb-4 focus:outline-none text-orange-800 font-light" 
-                    required />
-            <Link to='/my-account'>
-                <button 
-                className={`bg-fuchsia-950 py-3 text-amber-50 w-full rounded-lg`}>Create</button>
-            </Link>
-        </div>
+        <>
+          <form ref={form} className=''>
+            <label className=" font-semibold text-xs">username:</label> 
+              <input type="text" id="name" name="name" placeholder="Username" 
+                      className="rounded-lg border bg-amber-100/50 border-fuchsia-950 w-80 p-3 mb-4 focus:outline-none text-orange-800 font-light" 
+                      required />
+              <label className="font-semibold text-sm">email:</label>
+              <input type="text" id="name" name="name" placeholder="Email" 
+                      className="rounded-lg border bg-amber-100/50 border-fuchsia-950 w-80 p-3 mb-4 focus:outline-none text-orange-800 font-light" 
+                      required />
+              <label className="font-semibold text-xs"> password:</label>
+              <input type="text" id="name" name="name" placeholder="Password" 
+                      className="rounded-lg border bg-amber-100/50 border-fuchsia-950 w-80 p-3 mb-4 focus:outline-none text-orange-800 font-light" 
+                      required />
+              <Link to='/'>
+                  <button 
+                  className={`bg-fuchsia-950 py-3 text-amber-50 w-full rounded-lg`}
+                  onClick={() => createAccount()}>Create</button>
+              </Link>
+          </form>
+        </>
       )
     }
   }

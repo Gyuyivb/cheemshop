@@ -2,11 +2,11 @@ import { createContext, useState, useEffect } from 'react'
 
 export const ShoppingCartContext = createContext()
 
-const defaultUserData= {
-  username: 'Cheemsburger',
-  email: 'cheemsburger@cheesmail.com',
-  password: 'amxiety333'
-}
+// const defaultUserData= {
+//   username: 'Cheemsburger',
+//   email: 'cheemsburger@cheesmail.com',
+//   password: 'amxiety333'
+// }
 
 export const initializaLocalStorage = () =>{
   const accountLocalStorage = localStorage.getItem('account')
@@ -67,7 +67,7 @@ export const ShoppingCartProvider = ({ children }) => {
     const [searchByTitle, setSearchByTitle] = useState(null);
 
     //States for logging in and creating/existing account
-    const [account, setAccount] = useState(defaultUserData)
+    const [account, setAccount] = useState({})
     const [signOut, setSignOut] = useState(false)
     
     //Gets the api
