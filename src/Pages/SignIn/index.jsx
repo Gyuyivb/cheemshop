@@ -1,5 +1,5 @@
 import Layout from "../../Components/Layout"
-import { Link } from 'react-router-dom'
+import { Link, Navigate } from 'react-router-dom'
 import { useContext,  useState, useRef } from "react"
 import { ShoppingCartContext } from "../../Context"
 
@@ -15,6 +15,13 @@ function SignIn() {
   const noAccountInLocalState = context.account? Object.keys(context.account).length === 0 : true
   const hasUserAnAccount = !noAccountLocalStorage || !noAccountInLocalState
 
+  const handleSignIn = () => {
+    const stringifiedSignOut = JSON.stringify(false)
+    localStorage.setItem('sign-out', stringifiedSignOut)
+    context.setSignOut(false)
+    //Redirect
+    return <Navigate replace to={'/'} />
+  }
   //Create an account
   const createAccount = () => {
     const formData = new FormData(form.current)
@@ -23,9 +30,13 @@ function SignIn() {
       email: formData.get('email'),
       password: formData.get('password'),
     }
-    console.log('he aqui la data: ' , data)
+    // Create account
+    const stringifiedAccount = JSON.stringify(data)
+    localStorage.setItem('account', stringifiedAccount)
+    context.setAccount(data)
+    //Sign in
+    handleSignIn()
   }
-  
 
   const accountValidation = () => {
     if(!isSignUp){
@@ -46,7 +57,8 @@ function SignIn() {
             <Link to='/my-account'>
                 <button 
                  disabled={!hasUserAnAccount}
-                className={`bg-fuchsia-950 py-3 text-amber-50 w-full rounded-lg ${!hasUserAnAccount ? 'opacity-50 cursor-not-allowed' : ''}`}>Log in</button>
+                className={`bg-fuchsia-950 py-3 text-amber-50 w-full rounded-lg ${!hasUserAnAccount ? 'opacity-50 cursor-not-allowed' : ''}`}
+                onClick={() => handleSignIn()}>Log in</button>
             </Link>
               <button 
               disabled={hasUserAnAccount}
@@ -58,16 +70,16 @@ function SignIn() {
       return(
         <>
           <form ref={form} className=''>
-            <label className=" font-semibold text-xs">username:</label> 
-              <input type="text" id="name" name="name" placeholder="Username" 
+            <label className=" font-semibold text-xs">Username:</label> 
+              <input type="text" id="username" name="username" placeholder="Username" defaultValue={parsedAccount?.username}
                       className="rounded-lg border bg-amber-100/50 border-fuchsia-950 w-80 p-3 mb-4 focus:outline-none text-orange-800 font-light" 
                       required />
-              <label className="font-semibold text-sm">email:</label>
-              <input type="text" id="name" name="name" placeholder="Email" 
+              <label className="font-semibold text-sm">Email:</label>
+              <input type="text" id="email" name="email" placeholder="Email" defaultValue={parsedAccount?.email}
                       className="rounded-lg border bg-amber-100/50 border-fuchsia-950 w-80 p-3 mb-4 focus:outline-none text-orange-800 font-light" 
                       required />
-              <label className="font-semibold text-xs"> password:</label>
-              <input type="text" id="name" name="name" placeholder="Password" 
+              <label className="font-semibold text-xs">Password:</label>
+              <input type="text" id="password" name="password" placeholder="Password" defaultValue={parsedAccount?.password}
                       className="rounded-lg border bg-amber-100/50 border-fuchsia-950 w-80 p-3 mb-4 focus:outline-none text-orange-800 font-light" 
                       required />
               <Link to='/'>
