@@ -9,9 +9,17 @@ const Navbar = () =>{
     const activeStyle = 'underline underline-offset-4'
     const toggleOnSideBar = () =>context.setIsMenuOpen(!context.isMenuOpen)
 
+    //Sign Out
     const signOut = localStorage.getItem('sign-out')
     const parsedSignOut = JSON.parse(signOut)
     const isUserSignOut = context.signOut || parsedSignOut
+     //Account
+     const account = localStorage.getItem('account')
+    const parsedAccount = JSON.parse(account)
+     //Has an account?
+     const noAccountLocalStorage = parsedAccount? Object.keys(parsedAccount).lenght === 0 : true
+     const noAccountInLocalState = context.account? Object.keys(context.account).length === 0 : true
+     const hasUserAnAccount = !noAccountLocalStorage || !noAccountInLocalState
 
     const handleSignOut = () => {
         const stringifiedSignOut = JSON.stringify(true)
@@ -20,18 +28,7 @@ const Navbar = () =>{
     }
 
     const navbarRenderView = () => {
-        if (isUserSignOut) {
-            return (
-                <li>
-                    <NavLink
-                    to='/sign-in'
-                    className={({ isActive }) => isActive ? activeStyle: undefined}
-                    onClick={() => handleSignOut()}>
-                        Sign in
-                    </NavLink>
-                </li>
-            )
-        }else {
+        if (hasUserAnAccount && !isUserSignOut) {
             return (
                 <>
                 <li className='text-amber-100'>
@@ -59,6 +56,18 @@ const Navbar = () =>{
                 </li>
                 </>
             )
+        }else {
+            return (
+                <li>
+                    <NavLink
+                    to='/sign-in'
+                    className={({ isActive }) => isActive ? activeStyle: undefined}
+                    onClick={() => handleSignOut()}>
+                        Sign in
+                    </NavLink>
+                </li>
+                
+            )
         }
     }
 
@@ -67,7 +76,7 @@ const Navbar = () =>{
             <ul>
                 <li className='font-semibold text-lg'>
                         <NavLink 
-                        to='/'
+                        to={`${isUserSignOut? '/sign-in':'/'}`}
                         onClick={() => context.setSearchByCategory('')} 
                         >
                             Cheemshop

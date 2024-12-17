@@ -11,10 +11,10 @@ function SignIn() {
   const account = localStorage.getItem('account')
   const parsedAccount = JSON.parse(account)
   //Has an account?
-  const noAccountLocalStorage = parsedAccount? Object.keys(parsedAccount).lenght === 0 : true
+  const noAccountLocalStorage = parsedAccount? Object.keys(parsedAccount).length === 0 : true
   const noAccountInLocalState = context.account? Object.keys(context.account).length === 0 : true
   const hasUserAnAccount = !noAccountLocalStorage || !noAccountInLocalState
-
+  
   const handleSignIn = () => {
     const stringifiedSignOut = JSON.stringify(false)
     localStorage.setItem('sign-out', stringifiedSignOut)
