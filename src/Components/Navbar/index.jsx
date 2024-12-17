@@ -32,7 +32,7 @@ const Navbar = () =>{
             return (
                 <>
                 <li className='text-amber-100'>
-                    {context.account.email}
+                    {parsedAccount?.email}
                 </li>
                 <li>
                     <NavLink
@@ -129,7 +129,7 @@ const Navbar = () =>{
                     /> {context.cartProducts.length}
                 </li>
             </ul>
-            <ul className='lg:hidden flex gap-5'>
+            <ul className='lg:hidden flex ml-auto gap-5'>
                 <li className='flex'>
                     <ShoppingCartIcon className='size-7 text-amber-200' 
                     onClick={() => {
