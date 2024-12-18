@@ -27,10 +27,10 @@ const AppRoutes = () => {
   const isUserSignOut = context.signOut || parsedSignOut
 
   let routes = useRoutes([
-    { path: '/',element: hasUserAnAccount && !isUserSignOut ? <Home /> : <Navigate replace to={'/sign-in'} />},
-    { path: '/clothes',element:  hasUserAnAccount && !isUserSignOut ? <Home /> : <Navigate replace to={'/sign-in'} />},
-    { path: '/jewelry',element:  hasUserAnAccount && !isUserSignOut ? <Home /> : <Navigate replace to={'/sign-in'} />},
-    { path: '/electronics',element:  hasUserAnAccount && !isUserSignOut ? <Home /> : <Navigate replace to={'/sign-in'} />},
+    { path: '/', element: hasUserAnAccount && !isUserSignOut ? <Home /> : <Navigate replace to={'/sign-in'} />},
+    { path: '/clothes', element:  hasUserAnAccount && !isUserSignOut ? <Home /> : <Navigate replace to={'/sign-in'} />},
+    { path: '/jewelry', element:  hasUserAnAccount && !isUserSignOut ? <Home /> : <Navigate replace to={'/sign-in'} />},
+    { path: '/electronics', element:  hasUserAnAccount && !isUserSignOut ? <Home /> : <Navigate replace to={'/sign-in'} />},
     { path: '/others',element: hasUserAnAccount && !isUserSignOut ? <Home /> : <Navigate replace to={'/sign-in'} />},
     { path: '/my-account', element: <MyAccount />},
     { path: '/my-order', element: <MyOrder />},
